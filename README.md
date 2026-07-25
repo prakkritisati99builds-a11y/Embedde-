@@ -1,5 +1,4 @@
-# Embedde-
-This contains Embedde: Embedded Systems Projects
+Embedde: Embedded Systems Projects
 
 A collection of IoT and embedded electronics projects built with ESP32, sensors, and real-world applications. Each project demonstrates core embedded systems concepts: sensor integration, microcontroller programming, hardware design, and system optimization.
 
@@ -107,6 +106,6 @@ License
 Open source. Feel free to build, modify, and learn from these projects.
 
 Contact
-GitHub: prakkritisati99builds
+GitHub: PrakkritiSati99Builds 
 Project Timeline: July 2026 onwards
-Next Stepsall the automation related Datasheets simulations and final outcomes of prakkriti-ROS-lab work 
+Next Steps
