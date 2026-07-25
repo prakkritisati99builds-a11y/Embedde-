@@ -1,0 +1,39 @@
+#include<DHT.h>
+#define DHT_PIN 4               //include aand define hashtag starting no indent in start of line
+#define DHT_TYPE DHT22
+DHT dht(DHT_PIN,DHT_TYPE);
+
+unsigned long acstarttime;
+unsigned long buzzerstarttime;   //function is not being defined here no arguements are being given henve no round brackets are required
+unsigned long lastalerttime=0;
+bool buzzerActive = false;
+
+void setup() {
+ pinMode(19,OUTPUT);
+ Serial.begin(115200);
+ dht.begin();                    //Pin, Serial,sensor and timer setup 
+ acstarttime=millis();
+}
+
+void loop() {
+ float temp = dht.readTemperature();
+ bool A = (temp<=23.0 ;        //Set parameters for Inputs A and B 
+ bool B = (millis() -acstarttime >=20*60000UL);
+ bool condition = A&&B;
+
+Serial.print("Temp: "); Serial.print(temp);
+ Serial.print(" A: "); Serial.print(A);
+ Serial.print(" B: "); Serial.println(B);
+
+if(condition && !buzzerActive &&(millis()- lastalerttime>= 360000)) {
+
+ buzzerstarttime = millis();
+ buzzerActive = true;
+ digitalWrite(19,HIGH);
+}
+ if(condition && (millis()-buzzerstarttime>=20000UL)) {
+ digitalWrite(19,LOW);                                   //Buzzer Conditions set 
+ buzzerActive = false;
+ lastalerttime = millis();
+  }
+}
